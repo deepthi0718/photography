@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Lovely Studios</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        html,
+        body {
+            scroll-behavior: smooth;
+            line-height: 1.5;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .navbar-brand {
+            font-size: 25px;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+
+        .link {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .carousel {
+            height: 75vh;
+        }
+
+        .carousel-item {
+            height: 75vh;
+        }
+
+        .carousel-item img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item img:hover {
+            transform: scale(1.05);
+        }
+
+        .carousel-caption {
+            position: absolute;
+            left: auto;
+            right: 10%;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            width: 30%;
+            padding-top: 55px;
+        }
+
+        .carousel-caption h5 {
+            margin-top: 0;
+        }
+
+        .carousel-caption a {
+            color: #ffd700;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        .carousel-caption a:hover {
+            color: #ffc107;
+        }
+
+        .about__container {
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .about__container .section__header {
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .about__container .section__description {
+            max-width: 900px;
+            margin-inline: auto;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .about__container img {
+            max-width: 170px;
+            margin-inline: auto;
+            display: block;
+        }
+
+        .portfolio__container {
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .portfolio__container .section__header {
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .portfolio__grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .portfolio__card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            max-width: 300px;
+            flex: 1 1 300px;
+        }
+
+        .portfolio__card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio__card:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio__content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1;
+        }
+
+        .portfolio__card:hover .portfolio__content {
+            opacity: 1;
+        }
+
+        .portfolio__content button {
+            background-color: #ffd700;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            color: black;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .portfolio__content button:hover {
+            background-color: #ffc107;
+        }
+
+        .divider {
+            border-top: 2px solid black;
+            margin: 2rem 0;
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: none;
+        }
+
+        .section__container {
+            max-width: var(--max-width);
+            margin: auto;
+            padding: 5rem 1rem;
+        }
+
+        .section__header {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            font-weight: 400;
+            font-family: var(--header-font);
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        .instagram__container {
+            overflow: hidden;
+        }
+
+        .instagram__flex {
+            margin-top: 2rem;
+            width: max-content;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            animation: scroll 45s linear infinite;
+        }
+
+        .instagram__flex img {
+            max-width: 135px;
+        }
+
+        .blog {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url("/images/blog.jpg");
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+
+        .blog__container {
+            padding-block: 8rem;
+            display: grid;
+        }
+
+        .blog__content {
+            text-align: center;
+        }
+
+        .blog__content .section__header {
+            margin-bottom: 2rem;
+            color: var(--white);
+        }
+
+        .blog__content h4 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            font-weight: 400;
+            font-family: var(--header-font);
+            color: var(--white);
+        }
+
+        .blog__content p {
+            margin-bottom: 2rem;
+            line-height: 1.75rem;
+            color: rgb(170, 167, 167);
+        }
+
+        .blog__content .btn {
+            background-color: transparent;
+            border: 1px solid white;
+            color: white;
+        }
+
+        .container {
+            max-width: 1170px;
+            margin: auto;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .footer {
+            background-color: #24262b;
+            padding: 70px 0;
+        }
+
+        .footer-col {
+            width: 25%;
+            padding: 0 15px;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            color: #ffffff;
+            text-transform: capitalize;
+            margin-bottom: 35px;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .footer-col h4::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            background-color: #e91e63;
+            height: 2px;
+            box-sizing: border-box;
+            width: 50px;
+        }
+
+        .footer-col ul li:not(:last-child) {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            font-size: 16px;
+            text-transform: capitalize;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 300;
+            color: #bbbbbb;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: #ffffff;
+            padding-left: 8px;
+        }
+
+        .footer-col .social-links a {
+            display: inline-block;
+            height: 40px;
+            width: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            margin: 0 10px 10px 0;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            color: #ffffff;
+            transition: all 0.5s ease;
+        }
+
+        .footer-col .social-links a:hover {
+            color: #24262b;
+            background-color: #ffffff;
+        }
+
+        @keyframes scroll {
+            to {
+                transform: translateX(calc(-50% - 0.5rem));
+            }
+        }
+
+        @media (width > 768px) {
+            .blog__container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .blog__content {
+                grid-column: 2/3;
+            }
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html">LOVELY CREATIONS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#Gallery">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="store.html" target="_blank" rel="noopener noreferrer">Store</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#us">Find us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="link">
+        <p>get <b>20% off</b> on first 3 items purchase <a href="store.html" target="_blank"
+                rel="noopener noreferrer">click here now</a></p>
+    </div>
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./image/p1.jpg" class="d-block w-100" alt="Image 1">
+                <div class="carousel-caption">
+                    <h5>Ethereal Landscapes</h5>
+                    <p> Golden-hour captures of untouched landscapes, evoking awe with serene beauty and captivating
+                        light.</p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./image/p2 (1).jpg" class="d-block w-100" alt="Image 2">
+                <div class="carousel-caption">
+                    <h5>Urban Perspectives</h5>
+                    <p>Dynamic cityscapes freeze bustling energy, revealing architectural wonders and diverse humanity
+                        in vibrant contrast.</p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./image/p3.jpg" class="d-block w-100" alt="Image 3">
+                <div class="carousel-caption">
+                    <h5>Portraits of Resilience</h5>
+                    <p>Powerful portraits share stories of triumph, perseverance, and human resilience, inspiring hope
+                        and connection.</p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <div class="section__container about__container" id="about">
+        <h2 class="section__header">WE CAPTURE THE MOMENTS</h2>
+        <p class="section__description">
+            At Lovely Studios, we specialize in freezing those fleeting moments in time
+            that hold immense significance for you. With our passion for photography
+            and keen eye for detail, we transform ordinary moments into
+            extraordinary memories.
+        </p>
+        <p class="section__description">
+            Whether it's a milestone event, a candid portrait, or the breathtaking
+            beauty of nature, we strive to encapsulate the essence of every moment,
+            ensuring that your cherished memories last a lifetime. Trust us to
+            capture the magic of your life's journey, one frame at a time.
+        </p>
+        <p class="section__description">
+            With a blend of creativity and technical expertise, we craft unforgettable experiences that resonate with
+            your audience. Our team is dedicated to delivering excellence in every project, ensuring that your vision is
+            brought to life with precision and style. From concept to execution, we are committed to exceeding your
+            expectations and making your dreams a reality.
+        </p>
+
+        <img src="https://imgs.search.brave.com/vgJHk-VVdgy2BRmxVrjz9UD2DtPO8YP9dVNTo_cdEcc/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA0LzcwLzY2LzIy/LzM2MF9GXzQ3MDY2/MjIzOV91dUwzaHFW/ekVUZWM4eXZtemVX/Sm84TkJQMTRjbDdr/WC5qcGc"
+            alt="Lovely Studios logo" />
+    </div>
+
+
+
+    <hr class="divider">
+
+    <div class="section__container portfolio__container" id="Gallery">
+        <h2 class="section__header">GALLERY</h2>
+        <div class="portfolio__grid">
+            <div class="portfolio__card">
+                <img src="https://imgs.search.brave.com/54-0TfoMSQtxzLaGjMAxoCHM-3xfwUrLaUu3DaKUYyI/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vcGljanVt/Ym8uY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy90ZXh0LW5hdHVy/ZS1tZXRhbC1sZXR0/ZXJzLW9uLWEtcm9j/ay1pbi1ncmVlbi1m/b3Jlc3QtZnJlZS1w/aG90by5qcGc_dz02/MDAmcXVhbGl0eT04/MA"
+                    alt="portfolio">
+                <div class="portfolio__content">
+                    <button class="btn">VIEW GALLERY</button>
+                </div>
+            </div>
+            <div class="portfolio__card">
+                <img src="https://imgs.search.brave.com/mZ9p47ErtbbCfjbiRUxgVByWqKwv10fGtGvuM0QOXHQ/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9jZG4u/ZGl5cy5jb20vd3At/Y29udGVudC91cGxv/YWRzLzIwMTYvMDcv/ZmFtaWx5LXBob3Rv/Z3JhcGh5LWlkZWFz/LmpwZw"
+                    alt="portfolio">
+                <div class="portfolio__content">
+                    <button class="btn">VIEW GALLERY</button>
+                </div>
+            </div>
+            <div class="portfolio__card">
+                <img src="https://imgs.search.brave.com/gGsvHaUFnw6s5ch61HyrBuN4TcKRWSP4ezCH1yCdcNI/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzMwL2M1/LzVjLzMwYzU1Yzky/ZTAyNjVlOGUzNGJm/ZGEyZGU1NTdhN2Fh/LmpwZw"
+                    alt="portfolio">
+                <div class="portfolio__content">
+                    <button class="btn">VIEW GALLERY</button>
+                </div>
+            </div>
+            <div class="portfolio__card">
+                <img src="https://imgs.search.brave.com/LK-cGYi5-5tFCe-oIs4JTtiPkMlwlx6AO8rOYKdIKzM/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2VjL2Qz/L2UzL2VjZDNlM2Ni/ZmZiMDUwYThjYzk0/MzM2Y2U3ZTFkMjkz/LmpwZw"
+                    alt="portfolio">
+                <div class="portfolio__content">
+                    <button class="btn">VIEW GALLERY</button>
+                </div>
+            </div>
+            <div class="portfolio__card">
+                <img src="https://imgs.search.brave.com/36tT4hgZjYD-SrkKmCMrELuBsgCkzOSr_ouonuFARk0/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9w/b3J0cmFpdC1hZG9y/YWJsZS1uZXdib3Ju/LWJhYnlfMjMtMjE1/MDc5NTg4NC5qcGc_/c2l6ZT02MjYmZXh0/PWpwZw"
+                    alt="portfolio">
+                <div class="portfolio__content">
+                    <button class="btn">VIEW GALLERY</button>
+                </div>
+            </div>
+            <div class="portfolio__card">
+                <img src="https://imgs.search.brave.com/hTCaIfPwB1Lryy9ZLm6DaXXPtpa5VxxVE9jmeRl64jI/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vZGlnaXRh/bC1waG90b2dyYXBo/eS1zY2hvb2wuY29t/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDE4/LzA1L0hlbnJ5LVN0/cmVldC0uanBnP3Jl/c2l6ZT05OTksMTUw/MCZzc2w9MQ"
+                    alt="portfolio">
+                <div class="portfolio__content">
+                    <button class="btn">VIEW GALLERY</button>
+                </div>
+            </div>
+            <div class="portfolio__card">
+                <img src="https://imgs.search.brave.com/Q9ujRV9l4sqKzKKO-EE8gh61QrTLNCDLa9fv1F7Xdwk/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9leHBl/cnRwaG90b2dyYXBo/eS5iLWNkbi5uZXQv/d3AtY29udGVudC91/cGxvYWRzLzIwMjEv/MDEvZHJvbmUtcGhv/dG9ncmFwaHktaW1h/Z2U2LTEuanBn"
+                    alt="portfolio">
+                <div class="portfolio__content">
+                    <button class="btn">VIEW GALLERY</button>
+                </div>
+            </div>
+            <div class="portfolio__card">
+                <img src="https://imgs.search.brave.com/6EMWgZc76DSXHw6kHjl-NlTrQbzEhqzDC0ojN39YlGY/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTMw/NDA2NzEyL3Bob3Rv/L2NlbGVicml0eS1w/b3NpbmctZm9yLXBh/cGFyYXp6aS5qcGc_/cz02MTJ4NjEyJnc9/MCZrPTIwJmM9bnFO/MEs2SVlaRVQxTFhi/YkV1MlRxQVNzbDMw/NWhfaWFyUkRSVUxZ/X0xncz0"
+                    alt="portfolio">
+                <div class="portfolio__content">
+                    <button class="btn">VIEW GALLERY</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <section class="blog" id="blog">
+        <div class="section__container blog__container">
+            <div class="blog__content">
+                <h2 class="section__header">~ LATEST BLOG ~</h2>
+                <h4>Capturing Emotion in Every Frame</h4>
+                <p>
+                    This blog post delves into the importance of storytelling in
+                    photography and how Capturer approaches capturing emotion and
+                    narrative in their work. Readers will discover the techniques and
+                    strategies used by professional photographers to evoke emotion,
+                    convey meaning, and create compelling visual narratives that
+                    resonate with viewers on a deep level.
+                </p>
+                <div class="blog__btn">
+                    <button class="btn">Read More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <section class="section__container instagram__container" id="us">
+        <h2 class="section__header"><a href="https://www.instagram.com/">INSTAGRAM</a></h2>
+        <div class="instagram__flex">
+            <img src="https://imgs.search.brave.com/mUK7B5GjHetzEQeFV0rKtu_fTfT9NiKLkTBTiP_fzPE/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzNkLzIw/Lzk3LzNkMjA5Nzcx/NzczOWI3MTM0YmM5/ODY3ZWZmNWYwZmNk/LmpwZw"
+                alt="instagram">
+            <img src="https://imgs.search.brave.com/zv4oub8DZkXeXS2Ze9OWthS-shi2VVZ2av5RUB0pDuY/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzEyL2M1/LzE1LzEyYzUxNTIz/ZjM0NDJhYjg3Mzhm/ZTIyMTNlMDVjNWUy/LmpwZw"
+                alt="instagram">
+            <img src="https://imgs.search.brave.com/lpRwGj9RYzj9Z2rZ0243qKGOtm-7vkIFgpMxaysY0TY/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzY5LzFj/LzQ0LzY5MWM0NGY0/MDcxMGQ2MDQ2MmMy/ZTc4MWIwZGM3NWZh/LmpwZw"
+                alt="instagram">
+            <img src="https://imgs.search.brave.com/09uqFKpmrRqn-mcNyP2Edr7T5cNDs79kuHaFcqsxNnA/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9leHBl/cnRwaG90b2dyYXBo/eS5iLWNkbi5uZXQv/d3AtY29udGVudC91/cGxvYWRzLzIwMTgv/MDIvZmVtYWxlLXBv/c2VzLWhhbmRzLWlu/LWhhaXIuanBn"
+                alt="instagram">
+            <img src="https://imgs.search.brave.com/psJDMHiC7t7kWACGP75neQ0XV6YgOCtKlBu4Ljd5UtI/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vbGl2ZS5z/dGF0aWNmbGlja3Iu/Y29tLzQ3OTQvMzk5/MDkwNTY5MDRfNDQx/ODY5ZGNmZF9jLmpw/Zz9yZXNpemU9NTM0/LDgwMCZzc2w9MQ"
+                alt="instagram">
+            <img src="https://imgs.search.brave.com/8vmPXcYGceEQ4P0cpQI0JWSbguozFIKDlmuEvl6zpUw/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vZGlnaXRh/bC1waG90b2dyYXBo/eS1zY2hvb2wuY29t/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDI0/LzAzL25hdHVyZS1w/aG90b2dyYXBoeS1p/ZGVhcy0yMS5qcGc_/cmVzaXplPTE1MDAs/MTAwNCZzc2w9MQ"
+                alt="instagram">
+            <img src="https://imgs.search.brave.com/U04KI8g1Re4Z-1kjKqsjZlYsr1Hkm4el3dkpVipZJD4/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9leHBl/cnRwaG90b2dyYXBo/eS5iLWNkbi5uZXQv/d3AtY29udGVudC91/cGxvYWRzLzIwMTgv/MDcvbmF0dXJlLXBo/b3RvZ3JhcGh5LWlt/YWdlMS5qcGc"
+                alt="instagram">
+            <img src="https://imgs.search.brave.com/-Lf0MpDcG_dmb3dKzLCinxJX4rvOoJxEuVJTd8qPze4/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9leHBl/cnRwaG90b2dyYXBo/eS5iLWNkbi5uZXQv/d3AtY29udGVudC91/cGxvYWRzLzIwMjAv/MDUvbmF0dXJlLXBo/b3RvZ3JhcGhlcnMt/bWFyaW5hLWNhbm8t/d2lsZGxpZmUuanBl/Zw"
+                alt="instagram">
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>company</h4>
+                    <ul>
+                        <li><a href="#">about us</a></li>
+                        <li><a href="#">our services</a></li>
+                        <li><a href="#">privacy policy</a></li>
+                        <li><a href="#">affiliate program</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>get help</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">shipping</a></li>
+                        <li><a href="#">returns</a></li>
+                        <li><a href="#">order status</a></li>
+                        <li><a href="#">payment options</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>online shop</h4>
+                    <ul>
+                        <li><a href="#">Near By Stores</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Lights</a></li>
+                        <li><a href="#">Cameras</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $('.carousel').carousel({
+            interval: 3000 // Change image every 3 seconds
+        });
+        const instagram = document.querySelector(".instagram__flex");
+
+        Array.from(instagram.children).forEach((item) => {
+            const duplicateNode = item.cloneNode(true);
+            duplicateNode.setAttribute("aria-hidden", true);
+            instagram.appendChild(duplicateNode);
+        });
+    </script>
+</body>
+
+</html>

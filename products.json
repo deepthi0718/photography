@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "name": " DSLR 90D",
+        "price": 200,
+        "image": "https://m.media-amazon.com/images/I/51VGUKF1QRL._AC_SX466_.jpg"
+    },
+    {
+        "id": 2,
+        "name": " DJI mini 4 PRO",
+        "price": 250,
+        "image": "https://m.media-amazon.com/images/I/51l0mrdW+VL._AC_SY300_SX300_.jpg"
+    },
+    {
+        "id": 3,
+        "name": " Camera bag",
+        "price": 290,
+        "image": "https://m.media-amazon.com/images/I/61ll7cD1xOL._AC_SX466_.jpg"
+    },
+    {
+        "id": 4,
+        "name": " Tripod",
+        "price": 200,
+        "image": "https://m.media-amazon.com/images/I/71a-QSS9gYL.__AC_SX300_SY300_QL70_FMwebp_.jpg"
+    },
+    {
+        "id": 5,
+        "name": " Reflectors",
+        "price": 300,
+        "image": "https://m.media-amazon.com/images/I/71zWruc-NXL.__AC_SX300_SY300_QL70_FMwebp_.jpg"
+    },
+    {
+        "id": 6,
+        "name": " Rgb Light",
+        "price": 200,
+        "image": "https://m.media-amazon.com/images/I/61NLiSJDeiL.__AC_SX300_SY300_QL70_FMwebp_.jpg"
+    },
+    {
+        "id": 7,
+        "name": " Camera Bag",
+        "price": 200,
+        "image": "https://m.media-amazon.com/images/I/81DtAN13caL.__AC_SX300_SY300_QL70_FMwebp_.jpg"
+    },
+    {
+        "id": 8,
+        "name": " Memory Card",
+        "price": 200,
+        "image": "https://m.media-amazon.com/images/I/6124VrGU25L.__AC_SX300_SY300_QL70_FMwebp_.jpg"
+    }
+]
